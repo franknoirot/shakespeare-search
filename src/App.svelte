@@ -31,9 +31,18 @@
 	}
 </script>
 
-<div class='input-group'>
-	<label for="searchbar">Search</label>
-	<input name="searchbar" bind:value={ search } placeholder='Search a term'>
+<div class='intro'>
+	<div>
+		<h1>Shakespeare Searcher</h1>
+		<p>
+			This tool was built to work with the <a href='http://shakespeare.mit.edu' target='_blank' rel='noreferrer noopener'>MIT Shakespeare Library</a>,
+			 which has published all of Shakespeare's plays for public use. It uses Svelte.js to search all 37 plays for whatever is typed into the search bar.
+		</p>
+	</div>
+	<div class='input-group'>
+		<label for="searchbar">Search</label>
+		<input name="searchbar" bind:value={ search } placeholder='Search a term'>
+	</div>
 </div>
 <main>
 	{#each playsByGenre as genre, j (genre)}
@@ -55,6 +64,15 @@
 </main>
 
 <style>
+	.intro {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		margin: 5vh auto;
+		gap: 5vw;
+		max-width: 960px;
+	}
+
 	main {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -107,9 +125,16 @@
 	}
 
 	@media (max-width: 768px) {
+		.intro {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+		.input-group {
+			margin-block-end: .5em;
+		}
 		main {
 			grid-template-columns: 1fr;
-			margin: 1em 1vw;
+			margin: 1em 1vw 10vh;
 		}
 	}
 </style>
