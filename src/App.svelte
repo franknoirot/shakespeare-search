@@ -27,7 +27,6 @@
 		const nameStart = html.lastIndexOf(lineStr, searchStart)
 		if (nameStart < 0) return false
 		const lineId = html.slice(nameStart + lineStr.length, html.indexOf('>', nameStart + lineStr.length + 1))
-		console.log('lineId', lineId)
 		return lineId
 	}
 </script>
