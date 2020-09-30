@@ -9,15 +9,12 @@
 
 	const playsByGenre = genres.map(g => [g, Object.entries(shakespeareData).filter(([name, play]) => play.genre === g)])
 
-	console.log(playsByGenre)
-
 	$: if (search.length > 3) {
 		searchInstances = Object.entries(shakespeareData).map(([key, val]) => {
 			const regexp = new RegExp(search, 'gi')
 
 			return [key, Array.from(val.text.matchAll(regexp), m => m.index)]
 		})
-		console.log('searchIntances', searchInstances)
 	} else {
 		searchInstances = []
 	}
@@ -41,7 +38,7 @@
 	</div>
 	<div class='input-group'>
 		<label for="searchbar">Search</label>
-		<input name="searchbar" bind:value={ search } placeholder='Search a term'>
+		<input name="searchbar" bind:value={ search } placeholder='ex: songs'>
 	</div>
 </div>
 <main>
