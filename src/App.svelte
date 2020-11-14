@@ -9,9 +9,9 @@
 
 	const playsByGenre = genres.map(g => [g, Object.entries(shakespeareData).filter(([name, play]) => play.genre === g)])
 
-	$: if (search.length > 3) {
+	$: if (search.length > 2) {
 		searchInstances = Object.entries(shakespeareData).map(([key, val]) => {
-			const regexp = new RegExp(search, 'gi')
+			const regexp = new RegExp("[ \.,!\?\\-–—]"+search+"[ \.\,\!\?\\-–—]", 'gi')
 
 			return [key, Array.from(val.text.matchAll(regexp), m => m.index)]
 		})
